@@ -25,14 +25,6 @@ void main() {
   passagemAll.consultarPassagem("ABC123");
 
   primeiraClasse.atualizarPassagem();
-
-  primeiraClasse.log(
-    "Alteração realizada pelo: ${primeiraClasse.atendente?.nome ?? 'Não Informado'}",
-  );
-
-  primeiraClasse.auditar(
-    "Verificação de segurança realizada para a Primeira Classe.",
-  );
 }
 
 class Passageiro {
@@ -148,10 +140,11 @@ class PassagemPrimeiraClasse extends Passagem with Logger, Auditoria {
   @override
   void atualizarPassagem() {
     print("Passagem de primeira classe atualizada com sucesso");
-  }
 
-  log("Alteração realizada pelo: ${atendente?.nome ?? 'Não Informado'}");
-  auditar("Verificação de segurança realizada para a Primeira Classe.");
+    log("Alteração realizada pelo: ${atendente?.nome ?? 'Não Informado'}");
+
+    auditar("Verificação de segurança realizada para a Primeira Classe.");
+  }
 }
 
 mixin Logger {
@@ -162,6 +155,6 @@ mixin Logger {
 
 mixin Auditoria {
   void auditar(String message) {
-    print("[Auditoria]: $message")
+    print("[Auditoria]: $message");
   }
 }
